@@ -1,0 +1,98 @@
+<div class='grid'>
+    <div class="col-12">
+        <p-toolbar>
+            <div class="p-toolbar-group-left flex flex-wrap">
+                <p-button id="btnReincarca" label="Reîncarcă" styleClass="p-button p-button-raised" icon="pi pi-refresh"
+                    [style]="{ margin: '0px 10px' }" (onClick)="incarcaDate()"></p-button>
+                <p-button id="btnAdauga" label="Adaugă" styleClass="p-button p-button-outlined" icon="pi pi-file-edit"
+                    [style]="{ margin: '0px 10px' }" (onClick)="adauga()"></p-button>
+                <p-button id="btnModifica" label="Modifică" styleClass="p-button p-button-outlined" icon="pi pi-pencil"
+                    [style]="{ margin: '0px 10px' }" [disabled]="this.esteRandNeselectat"
+                    (onClick)="modificare()"></p-button>
+                <p-button id="btnStergere" label="Șterge" styleClass="p-button p-button-raised p-button-danger"
+                    icon="pi pi-trash" [style]="{ margin: '0px 10px' }" [disabled]="this.esteRandNeselectat"
+                    (onClick)="stergere()"></p-button>
+            </div>
+        </p-toolbar>
+    </div>
+
+    <div class="col-12 mt-2">
+        <p-table id="tableUsers" #dataTable [value]="this.source" dataKey="id" [paginator]="true"
+            [rowsPerPageOptions]="[10, 25, 50]" [rows]="10" [resizableColumns]="true" selectionMode="multiple"
+            [(selection)]="this.rows" [metaKeySelection]="true" [scrollable]="true" scrollHeight="600px"
+            [reorderableColumns]="true" [showCurrentPageReport]="true" (rowsChange)="changeRows($event)"
+            (onPage)="handlePageChange($event)"
+            currentPageReportTemplate="De la {first} până la {last} (din totalul de {totalRecords} înregistrări)"
+            styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="caption">
+                <div class="flex">
+                    <button pButton label="Previous" (click)="previousPage()" icon="pi pi-angle-left" style="margin-right: 10px"></button>
+                    <button pButton label="Next" (click)="nextPage()" icon="pi pi-angle-right" style="margin-right: 10px"></button>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input id="inputCauta" pInputText inputmode="text" [(ngModel)]="inputValue"
+                            (input)="filterTabel(inputValue)" placeholder="Caută" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pReorderableColumn pResizableColumn pSortableColumn="id" style="width:10%">
+                        <div class="flex align-items-center">
+                            ID
+                            <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
+                            <p-sortIcon field="id"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th pReorderableColumn pResizableColumn pSortableColumn="title" style="width:10%">
+                        <div class="flex align-items-center">
+                            Title
+                            <p-columnFilter type="text" field="title" display="menu"></p-columnFilter>
+                            <p-sortIcon field="title"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th pReorderableColumn pResizableColumn pSortableColumn="content">
+                        <div class="flex align-items-center">
+                            Content
+                            <p-columnFilter type="text" field="content" display="menu"></p-columnFilter>
+                            <p-sortIcon field="content"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th pReorderableColumn pResizableColumn pSortableColumn="location">
+                        <div class="flex align-items-center">
+                            Location
+                            <p-columnFilter type="text" field="location" display="menu"></p-columnFilter>
+                            <p-sortIcon field="location"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th pReorderableColumn pResizableColumn pSortableColumn="date">
+                        <div class="flex align-items-center">
+                            Date
+                            <p-columnFilter type="text" field="date" display="menu"></p-columnFilter>
+                            <p-sortIcon field="date"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th pReorderableColumn pResizableColumn pSortableColumn="name">
+                        <div class="flex align-items-center">
+                            User that added
+                            <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+                            <p-sortIcon field="name"></p-sortIcon>
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-source let-rowIndex="rowIndex">
+                <tr [pSelectableRow]="source" [pSelectableRowIndex]="rowIndex">
+                    <td>{{ source.id }}</td>
+                    <td>{{ source.title }}</td>
+                    <td>{{ source.content }}</td>
+                    <td>{{ source.location }}</td>
+                    <td>{{ source.date | date: 'dd/MM/yyyy' }}</td>
+                    <td>{{ source.user.name }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+
+</div>

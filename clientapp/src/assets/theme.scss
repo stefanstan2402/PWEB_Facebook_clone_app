@@ -1,0 +1,44 @@
+
+.theme-warn-snackbar {
+    background: #ffc400 !important;
+    color: white !important;
+  }
+  .theme-warn-snackbar button {
+    color: rgb(0, 0, 0) !important;
+    background-color: #ffffff !important;
+    box-shadow: rgb(0 0 0 / 12%) 0px 0px 3px, rgb(0 0 0 / 24%) 0px 0px 2px !important;
+  }
+  
+  .theme-normal-snackbar {
+    background: #ffffff !important;
+    color: rgb(0, 0, 0) !important;
+  }
+  .theme-normal-snackbar button {
+    color: white !important;
+    background-color: #2053c1 !important;
+    box-shadow: rgb(0 0 0 / 12%) 0px 0px 3px, rgb(0 0 0 / 24%) 0px 0px 2px !important;
+  }
+  
+  .theme-error-snackbar {
+    background: #ff3d00 !important;
+    color: white !important;
+  }
+  .theme-error-snackbar button {
+    color: rgb(0, 0, 0) !important;
+    background-color: #ffffff !important;
+    box-shadow: rgb(0 0 0 / 12%) 0px 0px 3px, rgb(0 0 0 / 24%) 0px 0px 2px !important;
+  }
+  
+  .theme-success-snackbar {
+    background: #008000 !important;
+    color: white !important;
+  }
+  .theme-success-snackbar button {
+    color: rgb(0, 0, 0) !important;
+    background-color: #ffffff !important;
+    box-shadow: rgb(0 0 0 / 12%) 0px 0px 3px, rgb(0 0 0 / 24%) 0px 0px 2px !important;
+  }
+
+  .mat-mdc-form-field {
+    width: 350px;
+  }

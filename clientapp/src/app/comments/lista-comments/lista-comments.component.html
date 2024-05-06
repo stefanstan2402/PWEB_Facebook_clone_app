@@ -1,0 +1,71 @@
+<div class='grid'>
+
+
+    <div class="col-12 mt-2">
+        <p-table id="tableUsers" #dataTable [value]="this.source" dataKey="id" [paginator]="true"
+            [rowsPerPageOptions]="[10, 25, 50]" [rows]="10" [resizableColumns]="true" selectionMode="multiple"
+            [(selection)]="this.rows" [metaKeySelection]="true" [scrollable]="true" scrollHeight="600px"
+            [reorderableColumns]="true" [showCurrentPageReport]="true"
+            currentPageReportTemplate="De la {first} până la {last} (din totalul de {totalRecords} înregistrări)"
+            styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="caption">
+                <div class="flex">
+                    <span class="p-input-icon-right mr-auto">
+                        Comments for current post ( {{numberOfComments}} ):
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pReorderableColumn pResizableColumn pSortableColumn="id" style="width:10%">
+                        <div class="flex align-items-center">
+                            ID
+                            <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
+                            <p-sortIcon field="id"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th pReorderableColumn pResizableColumn pSortableColumn="content" style="width:80%">
+                        <div class="flex align-items-center">
+                            Comment
+                            <p-columnFilter type="text" field="content" display="menu"></p-columnFilter>
+                            <p-sortIcon field="content"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th pReorderableColumn pResizableColumn pSortableColumn="name">
+                        <div class="flex align-items-center">
+                            Name of the user who posted the comment
+                            <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+                            <p-sortIcon field="name"></p-sortIcon>
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-source let-rowIndex="rowIndex">
+                <tr [pSelectableRow]="source" [pSelectableRowIndex]="rowIndex">
+                    <td>{{ source.id }}</td>
+                    <td>{{ source.content }}</td>
+                    <td>{{ source.user.name }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+
+    <div class="col-12">
+        <p-toolbar>
+            <div class="p-toolbar-group-left flex flex-wrap">
+                <p-button id="btnReincarca" label="Reîncarcă" styleClass="p-button p-button-raised" icon="pi pi-refresh"
+                    [style]="{ margin: '0px 10px' }" (onClick)="incarcaDate()"></p-button>
+                <p-button id="btnAdauga" label="Adaugă" styleClass="p-button p-button-outlined" icon="pi pi-file-edit"
+                    [style]="{ margin: '0px 10px' }" (onClick)="adaugaComm()"></p-button>
+                <p-button id="btnModifica" label="Modifică" styleClass="p-button p-button-outlined" icon="pi pi-pencil"
+                    [style]="{ margin: '0px 10px' }" [disabled]="this.esteRandNeselectat"
+                    (onClick)="modificare()"></p-button>
+                <p-button id="btnStergere" label="Șterge" styleClass="p-button p-button-raised p-button-danger"
+                    icon="pi pi-trash" [style]="{ margin: '0px 10px' }" [disabled]="this.esteRandNeselectat"
+                    (onClick)="stergere()"></p-button>
+            </div>
+        </p-toolbar>
+    </div>
+
+</div>

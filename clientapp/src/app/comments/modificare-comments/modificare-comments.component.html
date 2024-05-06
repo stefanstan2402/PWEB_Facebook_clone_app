@@ -1,0 +1,30 @@
+<div style="padding-left: 30px; padding-right: 30px;">
+    <p-panel id="panelDomicilii" [formGroup]="this.form">
+        <div class="pt-5">
+
+            <div class="p-fluid p-formgrid formgrid grid">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <span class="p-float-label">
+                            <textarea rows="3" pInputTextarea formControlName="content" [autoResize]="true"
+                                [disabled]="false"></textarea>
+                            <label htmlFor="content">Comment</label>
+                        </span>
+                        <small id="eroareNumarRequired" class="p-error"
+                            *ngIf="this.form.get('content')?.hasError('required') && this.form.get('content')?.touched">comment
+                            is required!</small>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <ng-template pTemplate="footer">
+            <div>
+                <p-button id="btnSalveaza" label="Salvează" [disabled]="!form.valid" (onClick)="salvare()"
+                    icon="pi pi-save" styleClass="p-button p-button-primary"></p-button>
+                <p-button id="btnAnuleaza" label="Anulează" (onClick)="exit()" icon="pi pi-times"
+                    styleClass="p-button p-button-danger" [style]="{ 'margin-left': '.5em' }"></p-button>
+            </div>
+        </ng-template>
+    </p-panel>
+</div>

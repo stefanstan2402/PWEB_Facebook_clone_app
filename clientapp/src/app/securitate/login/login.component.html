@@ -1,0 +1,50 @@
+<div class="wrapper">
+  <div class="login-body">
+    <div id="login-wrapper">
+      <h1
+        style="color: #648CB7; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+        Facebook clone app</h1>
+      <h6
+        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+        An application for Web programming course</h6>
+
+      <div id="login-container" [formGroup]="this.formLogin" (keydown.enter)="this.login()">
+        <span class="title">Authentification</span>
+        <div class="grid">
+          <div class="field col-12" style="margin-top: 50px;">
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+              <span class="p-float-label">
+                <input type="text" inputId="inputCont" pInputText formControlName="email">
+                <label for="inputCont">Account</label>
+              </span>
+            </div>
+          </div>
+          <div class="field col-12">
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon"><i class="pi pi-key"></i></span>
+              <span class="p-float-label">
+                <input type="password" inputId="inputParola" pInputText formControlName="password">
+                <label for="inputParola">Password</label>
+              </span>
+            </div>
+          </div>
+          <div class="col-12">
+            <button pButton pRipple id="btnAutentificare" label="Login" (click)="this.login()" icon="pi pi-user"
+              loadingIcon="pi pi-spin pi-spinner" [loading]="this.loading"></button>
+          </div>
+          <div class="col-12">
+            <button pButton pRipple id="btnAutentificare" label="Register" (click)="this.register()" icon="pi pi-user"
+              loadingIcon="pi pi-spin pi-spinner"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="login-footer">
+      </div>
+    </div>
+  </div>
+  <footer class="text-center">
+
+  </footer>
+</div>

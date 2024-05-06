@@ -1,0 +1,36 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	
+	# If an existing asset or directory is requested go to it as it is
+	RewriteCond %{REQUEST_FILENAME} -s [OR]
+	RewriteCond %{REQUEST_FILENAME} -l [OR]
+	RewriteCond %{REQUEST_FILENAME} -d
+	RewriteRule ^.*$ - [NC,L]
+
+	# If the requested resource doesn't exist, use index.html...
+	#RewriteRule ^(.*) ./index.html [NC,L]
+	#... Or use this instead if you serve your app from a subfolder:
+	RewriteRule ^(.*) /m1clientapp/index.html [NC,L]
+</IfModule>
+
+# Enable other mimetypes
+<IfModule mod_mime.c>
+	## Verified this in httpd.conf before!
+	## LoadModule mime_module modules/mod_mime.so
+
+	AddType application/manifest+json webmanifest
+</IfModule>
+	
+# Disable caching so your user's always see your app's latest version.
+<FilesMatch "\.(html|htm|js|json|css|webmanifest)$">
+	<IfModule mod_headers.c>
+		FileETag None
+		Header unset ETag
+		Header unset Pragma
+		Header unset Cache-Control
+		Header unset Last-Modified
+		Header set Pragma "no-cache"
+		Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+		Header set Expires "Mon, 10 Apr 1972 00:00:00 GMT"
+	</IfModule>
+</FilesMatch>

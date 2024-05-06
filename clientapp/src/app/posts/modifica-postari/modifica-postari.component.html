@@ -1,0 +1,62 @@
+<div style="padding-left: 30px; padding-right: 30px;">
+    <p-panel id="panelDomicilii" [formGroup]="this.form">
+        <ng-template pTemplate="header">
+            <span class="text-primary font-semibold text-xl" *ngIf="this.esteVizualizare == false"> {{ this.titlu }}
+                postare</span>
+            <span class="text-primary font-semibold text-xl" *ngIf="this.esteVizualizare == true"> Vezi postarea</span>
+        </ng-template>
+
+        <div class="pt-5">
+
+            <div class="p-fluid p-formgrid formgrid grid">
+                <div class="xl:col-6 lg:col-6 md:col-12 sm:col-12 col-12 px-5" *ngIf="this.idEntitate != '0'">
+                    <div class="field">
+                        <span class="p-float-label">
+                            <input id="inputNumar" pInputText type="text" formControlName="numeUser"
+                                [attr.autocomplete]="'off'" class="ng-pristine" />
+                            <label htmlFor="inputNumar">User that creates/modifies the post</label>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="xl:col-12 lg:col-12 md:col-12 sm:col-12 col-12 px-5 pt-5">
+                    <div class="field">
+                        <span class="p-float-label">
+                            <span class="p-float-label">
+                                <textarea rows="3" pInputTextarea formControlName="content" [autoResize]="true"
+                                    [disabled]="false"></textarea>
+                                <label htmlFor="content">Content of the post</label>
+                            </span>
+                            <small id="eroareNumarRequired" class="p-error"
+                                *ngIf="this.form.get('content')?.hasError('required') && this.form.get('content')?.touched">Content
+                                is required!</small>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-5" *ngIf="this.esteVizualizare == true">
+            <app-likes></app-likes>
+        </div>
+
+
+        <div class="pt-5" *ngIf="this.esteVizualizare == true">
+            <app-lista-comments></app-lista-comments>
+        </div>
+
+        <ng-template pTemplate="footer">
+            <div *ngIf="this.esteVizualizare == false">
+                <p-button id="btnSalveaza" label="Salvează" [disabled]="!form.valid" (onClick)="salvare()"
+                    icon="pi pi-save" styleClass="p-button p-button-primary"></p-button>
+                <p-button id="btnAnuleaza" label="Anulează" (onClick)="anulare()" icon="pi pi-times"
+                    styleClass="p-button p-button-danger" [style]="{ 'margin-left': '.5em' }"></p-button>
+            </div>
+
+            <div *ngIf="this.esteVizualizare == true">
+                <p-button id="btnInapoi" label="Înapoi" (onClick)="goBack()" icon="pi pi-arrow-left"
+                    styleClass="p-button p-button-sm" [style]="{ 'margin-left': '.5em' }"></p-button>
+            </div>
+        </ng-template>
+    </p-panel>
+</div>

@@ -1,0 +1,36 @@
+<div class="col-12">
+    <p-toolbar>
+        <div class="p-toolbar-group-left flex flex-wrap">
+            <p-button id="btnReincarca" styleClass="p-button p-button-raised" [style]="{ margin: '0px 10px' }">
+                {{nrLikes}} Likes</p-button>
+            <p-button id="btnAdauga" label="Like" styleClass="p-button p-button-outlined" icon="pi pi-plus"
+                [style]="{ margin: '0px 10px' }" (onClick)="adaugaLike()"
+                *ngIf="currentUserAddedLike == false"></p-button>
+            <p-button id="btnStergere" label="Dislike" styleClass="p-button p-button-raised p-button-danger"
+                icon="pi pi-minus" [style]="{ margin: '0px 10px' }" (onClick)="stergeLike()"
+                *ngIf="currentUserAddedLike == true"></p-button>
+        </div>
+    </p-toolbar>
+
+    <div class="col-12 mt-2">
+        <p-table id="tableUsers" #dataTable [value]="this.source" dataKey="id" [paginator]="false"
+             [rows]="this.source.length" [resizableColumns]="true" selectionMode="multiple"
+            [(selection)]="this.rows" [metaKeySelection]="true" [scrollable]="true" scrollHeight="600px"
+            [reorderableColumns]="true" [showCurrentPageReport]="true"
+            styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="caption">
+                <div class="flex">
+                    <span class="p-input-icon-right mr-auto">
+                        Likes for current post ( {{nrLikes}} ):
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="body" let-source let-rowIndex="rowIndex">
+                <tr [pSelectableRow]="source" [pSelectableRowIndex]="rowIndex">
+                    <td>{{ source.user.name }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+</div>

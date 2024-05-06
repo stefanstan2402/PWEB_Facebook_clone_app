@@ -1,0 +1,107 @@
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeflex/primeflex.scss";
+@import "../node_modules/primeicons/primeicons.css";
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.p-confirm-dialog-message {
+  white-space: pre-line;
+}
+
+li.cdk-drag {
+  z-index: 21000 !important;
+}
+
+.txtnotificare{
+  color:#628cb6;
+}
+
+
+.blue-border{
+  border: 1px solid #33D7FF!important;
+}
+
+.p-overlay-badge .p-badge {
+  top: -14px!important;
+}
+
+
+.cp-background {
+    animation: cp-animation 2s linear infinite;
+    background: -moz-linear-gradient(
+      left,
+      rgba(15, 15, 15, 0) 0%,
+      #628cb645,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background: -webkit-linear-gradient(
+      left,
+      rgba(15, 15, 15, 0) 0%,
+      #628cb645,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background: linear-gradient(
+      to right,
+      rgba(15, 15, 15, 0) 0%,
+      #628cb645,
+      rgba(255, 255, 255, 0) 100%
+    );
+    display: block;
+    height: inherit;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 70%;
+    will-change: transform;
+  }
+  
+  .cp-text {
+    background-color: #90909012;
+    display: block;
+    height: 1em;
+    margin-bottom: 1em;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+  
+  .cp-text.cp-text-sm {
+    width: 30% !important;
+  }
+  
+  .cp-text.cp-text-md {
+    width: 60% !important;
+  }
+  
+  .cp-text.cp-text-lg {
+    width: 80% !important;
+  }
+  
+  .cp-text.cp-text-short {
+    height: 0.8em !important;
+  }
+  
+  .cp-text.cp-text-average {
+      height: 1.5em !important;
+  }
+  
+  .cp-text.cp-text-tall {
+      height: 2em !important;
+  }
+  
+@keyframes cp-animation {
+    0% {
+      transform: translateX(-100%);
+    }
+  
+    40% {
+      transform: translateX(50%);
+    }
+  
+    100% {
+      transform: translateX(200%);
+    }
+  }
+  

@@ -1,0 +1,123 @@
+/* Login */
+@media screen and (min-height: 610px){ 
+    .login-body {
+        height: 80vh;
+        padding: 100px 0 0 0;
+    }    
+}
+
+.login-body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  box-sizing: border-box;  
+  height: auto;
+}
+
+
+
+#login-wrapper {
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#login-wrapper #login-container {
+  border-radius: 15px;
+  margin-top: 20px;
+  box-sizing: border-box;
+  height: auto;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  padding: 2em;
+  text-align: center;
+  color: #4f575b;
+}
+
+#login-wrapper #login-container .title {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+#login-wrapper #login-container a {
+  color: #648CB7;
+  text-decoration: none;
+  vertical-align: middle;
+  font-size: 16px;
+}
+
+#login-wrapper #login-container .p-col-12,
+#login-wrapper #login-container .p-col-6 {
+  padding: 0.8em;
+}
+
+#login-wrapper .login-footer {
+  color: #ffffff;
+  font-size: 14px;
+  margin-top: 50px;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+button {
+  background-color: #648CB7 !important;
+}
+
+.p-inputgroup-addon {
+  background-color: #648CB7 !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 40em) {
+  .login-body {
+    padding-top: 50px;
+  }
+
+  #login-wrapper {
+    width: 320px;
+  }
+
+  #login-wrapper #login-container {
+    height: 350px;
+  }
+}
+
+.autoSizeImg {
+  max-width: 35%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+h1 {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+h6 {
+  animation: fadeIn 2s ease-out forwards;
+}

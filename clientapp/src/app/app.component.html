@@ -1,0 +1,9 @@
+<router-outlet></router-outlet>
+<p-toast position="top-center" key="tc"></p-toast>
+<p-confirmDialog #cd
+    [style]="{ width: '25vw' }"
+    [header]="cd.header"
+    [message]="cd.message"
+    rejectButtonStyleClass="p-button-outlined">
+</p-confirmDialog>
+<app-spinner></app-spinner>

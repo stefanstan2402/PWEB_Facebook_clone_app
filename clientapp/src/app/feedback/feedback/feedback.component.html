@@ -1,0 +1,82 @@
+<div style="padding-left: 30px; padding-right: 30px;">
+    <p-panel id="panelDomicilii" [formGroup]="this.form">
+        <ng-template pTemplate="header">
+            <span class="text-primary font-semibold text-xl"> {{ this.titlu }} feedback</span>
+        </ng-template>
+
+        <div class="pt-5">
+
+            <div class="p-fluid p-formgrid formgrid grid">
+                <div class="xl:col-12 lg:col-12 md:col-12 sm:col-12 col-12 px-5">
+                    <div class="field">
+                        <span class="p-float-label">
+                            <textarea rows="3" pInputTextarea formControlName="content" [autoResize]="true"
+                                [disabled]="false"></textarea>
+                            <label htmlFor="content">Feedback</label>
+                        </span>
+                        <small id="eroareNumarRequired" class="p-error"
+                            *ngIf="this.form.get('content')?.hasError('required') && this.form.get('content')?.touched">Feedback
+                            is required</small>
+                    </div>
+                </div>
+
+                <div class="xl:col-4 lg:col-4 md:col-12 sm:col-12 col-12 px-5">
+                    <div class="field">
+                        <span class="p-float-label">
+                            <p-dropdown [filter]="true" id="inputTypeAppreciation" formControlName="rating"
+                                [required]="true" placeholder="Rating" class="ng-pristine" [options]="this.ratingNotes"
+                                optionValue="id" optionLabel="value" [showClear]="true" filterBy="value"
+                                [autoDisplayFirst]="false"></p-dropdown>
+                            <label for="inputIdJudet">Rating</label>
+                        </span>
+                        <small id="eroareIdRoleRequired" class="p-error"
+                            *ngIf="this.form.get('rating')?.hasError('required')  && this.form.get('rating')?.touched">Rating
+                            is requied!</small>
+                    </div>
+                </div>
+
+                <div class="xl:col-8 lg:col-8 md:col-12 sm:col-12 col-12 px-5"></div>
+
+                <div class="xl:col-2 lg:col-4 md:col-12 sm:col-12 col-12 px-5">
+                    Type of appreciation
+                </div>
+
+                <div class="xl:col-2 lg:col-4 md:col-12 sm:col-12 col-12 px-5" *ngFor="let option of appreciationTypes">
+                    <p-checkbox name="selectedOptions" value="{{option}}" formControlName="typeOfAppreciation"
+                        (onChange)="onChange(option, $event)"></p-checkbox>
+                    {{ option }}
+                </div>
+
+                <div class="xl:col-4 lg:col-4 md:col-12 sm:col-12 col-12 px-5"></div>
+
+                <br/><br/><br/>
+
+                <div class="xl:col-12 lg:col-12 md:col-12 sm:col-12 col-12 px-5">
+                    Is user experience enjoyable?
+                </div>
+                <br/>
+                <div class="xl:col-4 lg:col4 md:col-12 sm:col-12 col-12 px-5">
+                    <div *ngFor="let category of categories" class="field-checkbox">
+                        <p-radioButton [inputId]="category.name" [value]="category.key"
+                            formControlName="isUserExperienceEnjoyable"></p-radioButton>
+                        <label [for]="category.key" class="ml-2">{{ category.name }}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ng-template pTemplate="footer">
+            <div *ngIf="modVizualizare === false">
+                <p-button id="btnSalveaza" label="Salvează" [disabled]="!form.valid" (onClick)="salvare()" icon="pi pi-save"
+                    styleClass="p-button p-button-primary"></p-button>
+                <p-button id="btnAnuleaza" label="Anulează" (onClick)="anulare()" icon="pi pi-times"
+                    styleClass="p-button p-button-danger" [style]="{ 'margin-left': '.5em' }"></p-button>
+            </div>
+
+            <div *ngIf="modVizualizare === true">
+                <p-button id="btnInapoi" label="Înapoi" (onClick)="goBack()" icon="pi pi-arrow-left"
+                    styleClass="p-button p-button-sm" [style]="{ 'margin-left': '.5em' }"></p-button>
+            </div>
+        </ng-template>
+    </p-panel>
+</div>

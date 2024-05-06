@@ -1,0 +1,33 @@
+<div class="layout-wrapper" (click)="onLayoutClick()"
+     [ngClass]="{'layout-static': false,
+                'layout-overlay': true,
+                'layout-overlay-active': this.overlayMenuActive,
+                'layout-horizontal': false,
+                'layout-slim': false,
+                'layout-static-inactive': false,
+                'layout-mobile-active': false,
+                'layout-menu-dark': false,
+                'layout-menu-light': true,
+                'p-input-filled': false, 
+                'p-ripple-disabled': false}">
+
+    <app-topbar></app-topbar>
+
+    <div class="layout-menu-container" (click)="onMenuClick($event)">
+        <div class="layout-menu-logo"><span>Menu</span></div>
+        <div class="layout-menu-wrapper">
+            <div class="menu-scroll-content">
+                <app-main-menu></app-main-menu>
+            </div>
+        </div>
+    </div>
+
+    <div class="layout-main">
+        <!-- <app-breadcrumb></app-breadcrumb> -->
+
+        <div class="layout-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <div class="layout-mask"></div>
+</div>

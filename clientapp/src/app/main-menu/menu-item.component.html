@@ -1,0 +1,72 @@
+<ng-container>
+    <div *ngIf="root && menuItem.visible !== false">
+        <i class="layout-menuitem-icon" [ngClass]="menuItem.iconName" style="size: 1.5rem;"></i>
+        <span class="layout-menuitem-text">{{menuItem.displayName}}</span>
+    </div>
+    <a [attr.href]="menuItem.route" pRipple (click)="itemClick($event)" 
+        *ngIf="(!menuItem.route || menuItem.children) && menuItem.visible !== false && !menuItem.externalUrl" (mouseenter)="onMouseEnter()"
+        (keydown.enter)="itemClick($event)" [attr.tabindex]="!visible ? '-1' : 0">
+        <i class="layout-menuitem-icon" [ngClass]="menuItem.iconName"></i>
+        <span class="layout-menuitem-text">{{menuItem.displayName}}</span>
+        <i class="pi pi-fw pi-angle-down layout-submenu-toggler" *ngIf="menuItem.children.length > 0"></i>
+    </a>
+    <a (click)="itemClick($event)" pRipple (mouseenter)="onMouseEnter()" 
+        *ngIf="(menuItem.route && !menuItem.children) && menuItem.visible !== false" [routerLink]="menuItem.route"
+        routerLinkActive="active-route" [attr.tabindex]="!visible ? '-1' : 0">
+        <i class="layout-menuitem-icon" [ngClass]="menuItem.iconName"></i>
+        <span class="layout-menuitem-text">{{menuItem.displayName}}</span>
+        <i class="pi pi-fw pi-angle-down layout-submenu-toggler" *ngIf="menuItem.children"></i>
+    </a>
+    <a href="{{menuItem.externalUrl}}" target="_blank" pRipple
+        *ngIf="menuItem.externalUrl"
+        [attr.tabindex]="!visible ? '-1' : 0">
+        <i class="layout-menuitem-icon" [ngClass]="menuItem.iconName"></i>
+        <span class="layout-menuitem-text">{{menuItem.displayName}}</span>
+    </a>
+    <div class="layout-menu-tooltip" *ngIf="menuItem.visible !== false">
+        <div class="layout-menu-tooltip-arrow"></div>
+        <div class="layout-menu-tooltip-text">{{menuItem.displayName}}</div>
+    </div>
+    <ul *ngIf="(menuItem.children || (active || animating)) && menuItem.visible !== false"
+        (@children.done)="onAnimationDone()"
+        [@children]="(root ? 'visible' : active ? 'visibleAnimated' : 'hiddenAnimated')">
+        <ng-template ngFor let-child let-i="index" [ngForOf]="menuItem.children">
+            <li app-menu-item *ngIf="child.visible!==false" [menuItem]="child" [visible]="active" [index]="i"
+                [parentKey]="key"></li>
+        </ng-template>
+    </ul>
+</ng-container>
+<!-- <ng-container>
+    <div *ngIf="root && menuItem.visible !== false">
+        <i class="layout-menuitem-icon" [ngClass]="menuItem.iconName"></i>
+        <span class="layout-menuitem-text">{{ menuItem.displayName }}</span>
+    </div>
+    <a [attr.href]="menuItem.route" (click)="itemClick($event)" 
+        *ngIf="(!menuItem.route || menuItem.children) && menuItem.visible !== false"
+        (mouseenter)="onMouseEnter()" (keydown.enter)="itemClick($event)" pRipple
+        [attr.tabindex]="!visible ? '-1' : 0">
+        <i class="layout-menuitem-icon" [ngClass]="menuItem.iconName"></i>
+        <span class="layout-menuitem-text">{{menuItem.displayName}}</span>
+        <i class="pi pi-fw pi-angle-down layout-submenu-toggler" *ngIf="menuItem.children"></i>
+    </a>
+    <a (click)="itemClick($event)" (mouseenter)="onMouseEnter()" 
+        *ngIf="(menuItem.route && !menuItem.children) && menuItem.visible !== false"
+        [routerLink]="menuItem.route" routerLinkActive="active-route" pRipple
+        [attr.tabindex]="!visible ? '-1' : 0">
+        <i class="layout-menuitem-icon" [ngClass]="menuItem.iconName"></i>
+        <span class="layout-menuitem-text">{{ menuItem.displayName }}</span>
+        <i class="pi pi-fw pi-angle-down layout-submenu-toggler" *ngIf="menuItem.children"></i>
+																	   
+    </a>
+    <div class="layout-menu-tooltip" *ngIf="menuItem.visible !== false">
+        <div class="layout-menu-tooltip-arrow"></div>
+        <div class="layout-menu-tooltip-text">{{ menuItem.displayName }}</div>
+    </div>
+    <ul *ngIf="(menuItem.children || (active || animating)) && menuItem.visible !== false" (@children.done)="onAnimationDone()"
+        [@children]="(root ? 'visible' : active ? 'visibleAnimated' : 'hiddenAnimated')">
+        <ng-template ngFor let-child let-i="index" [ngForOf]="menuItem.children">
+            <li app-menu-item *ngIf="child.visible" 
+                [menuItem]="child" [index]="i" [visible]="child.visible" [parentKey]="menuItem[i].itemId"></li>
+        </ng-template>
+    </ul>
+</ng-container> -->

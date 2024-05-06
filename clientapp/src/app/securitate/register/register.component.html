@@ -1,0 +1,90 @@
+<div class="wrapper">
+    <div class="login-body">
+        <div id="login-wrapper">
+            <h1
+                style="color: #648CB7; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                Facebook clone app</h1>
+            <h6
+                style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                An application for Web programming course</h6>
+
+
+            <div style="padding-left: 30px; padding-right: 30px;" id="login-container">
+                <p-panel id="panelDomicilii" [formGroup]="this.form">
+                    <ng-template pTemplate="header">
+                        <span class="text-primary font-semibold text-xl"> Add user</span>
+                    </ng-template>
+
+                    <div class="pt-5">
+
+                        <div class="p-fluid p-formgrid formgrid grid">
+                            <div class="xl:col-12 lg:col-12 md:col-12 sm:col-12 col-12 px-5">
+                                <div class="field">
+                                    <span class="p-float-label">
+                                        <input id="inputNumar" pInputText type="text" formControlName="name"
+                                            [attr.autocomplete]="'off'" class="ng-pristine" />
+                                        <label htmlFor="inputNumar">Name</label>
+                                    </span>
+                                    <small id="eroareNumarRequired" class="p-error"
+                                        *ngIf="this.form.get('name')?.hasError('required') && this.form.get('name')?.touched">Name
+                                        is required</small>
+                                </div>
+                            </div>
+
+                            <div class="xl:col-12 lg:col-12 md:col-12 sm:col-12 col-12 px-5">
+                                <div class="field">
+                                    <span class="p-float-label">
+                                        <span class="p-float-label">
+                                            <input id="inputNumar2" pInputText type="text" formControlName="email"
+                                                [attr.autocomplete]="'off'" class="ng-pristine" />
+                                            <label htmlFor="inputNumar2">Email</label>
+                                        </span>
+                                        <small id="eroareNumarRequired" class="p-error"
+                                            *ngIf="this.form.get('email')?.hasError('required') && this.form.get('email')?.touched">Email
+                                            is required</small>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="xl:col-12 lg:col-12 md:col-12 sm:col-12 col-12 px-5">
+                                <div class="field">
+                                    <span class="p-float-label">
+                                        <input id="inputNumar2" pInputText type="password" formControlName="password"
+                                            [attr.autocomplete]="'off'" class="ng-pristine" />
+                                        <label htmlFor="inputNumar2">Password</label>
+                                    </span>
+                                    <small id="eroareNumarRequired" class="p-error"
+                                        *ngIf="this.form.get('password')?.hasError('required') && this.form.get('password')?.touched">Password
+                                        is required</small>
+                                </div>
+                            </div>
+
+                            <div class="xl:col-12 lg:col-12 md:col-12 sm:col-12 col-12 px-5">
+                                <div class="field">
+                                    <span class="p-float-label">
+                                        <input id="inputNumar2" pInputText type="text" formControlName="phoneNumber"
+                                            [attr.autocomplete]="'off'" class="ng-pristine" />
+                                        <label htmlFor="inputNumar2">Phone Number</label>
+                                    </span>
+                                    <small id="eroareNumarRequired" class="p-error"
+                                        *ngIf="this.form.get('phoneNumber')?.hasError('required') && this.form.get('phoneNumber')?.touched">Phone
+                                        number is required</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ng-template pTemplate="footer">
+                        <div>
+                            <p-button id="btnSalveaza" label="Save" [disabled]="!form.valid" (onClick)="salvare()"
+                                icon="pi pi-save" styleClass="p-button p-button-primary"></p-button>
+                            <p-button id="btnAnuleaza" label="Go back" (onClick)="anulare()" icon="pi pi-times"
+                                styleClass="p-button p-button-danger" [style]="{ 'margin-left': '.5em' }"></p-button>
+                        </div>
+                    </ng-template>
+                </p-panel>
+            </div>
+
+        </div>
+    </div>
+</div>
